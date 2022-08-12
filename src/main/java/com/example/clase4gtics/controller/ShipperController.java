@@ -37,11 +37,6 @@ public class ShipperController {
 
     @PostMapping("/save")
     public String guardarNuevoTransportista(Shipper shipper, RedirectAttributes attr) {
-        if (shipper.getShipperId() == 0) {
-            attr.addFlashAttribute("msg", "Usuario creado exitosamente");
-        } else {
-            attr.addFlashAttribute("msg", "Usuario actualizado exitosamente");
-        }
         shipperRepository.save(shipper);
         return "redirect:/shipper/list";
     }
@@ -70,7 +65,6 @@ public class ShipperController {
 
         if (optShipper.isPresent()) {
             shipperRepository.deleteById(id);
-            attr.addFlashAttribute("msg","Transportista borrado exitosamente");
         }
         return "redirect:/shipper/list";
 

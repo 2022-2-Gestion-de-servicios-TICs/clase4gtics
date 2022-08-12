@@ -33,11 +33,6 @@ public class ProductController {
 
     @PostMapping("/save")
     public String guardarProducto(Product product, RedirectAttributes attr) {
-        if (product.getId() == 0) {
-            attr.addFlashAttribute("msg", "Producto creado exitosamente");
-        } else {
-            attr.addFlashAttribute("msg", "Producto actualizado exitosamente");
-        }
         productRepository.save(product);
         return "redirect:/product";
     }
@@ -65,7 +60,6 @@ public class ProductController {
 
         if (optProduct.isPresent()) {
             productRepository.deleteById(id);
-            attr.addFlashAttribute("msg","Producto borrado exitosamente");
         }
         return "redirect:/product";
 
