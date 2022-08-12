@@ -3,7 +3,7 @@ package com.example.clase4gtics.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "suppliers")
+@Table(name = "Suppliers")
 public class Supplier {
 
     @Id
