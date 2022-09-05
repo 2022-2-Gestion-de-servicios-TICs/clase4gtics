@@ -8,7 +8,7 @@
     </head>
     <body>
         <main>
-            <div class="container px-4 py-5">
+            <div class="container px-4 py-5 col-lg-4 offset-lg-4">
                 <h1 class="pb-2 mb-3 border-bottom">Nuevo Producto</h1>
                 <form method="post" th:action="@{'/product/save'}" class="mt-2">
                     <div class="mb-3">
@@ -17,11 +17,19 @@
                     </div>
                     <div class="mb-3">
                         <label for="supplier" class="form-label">Proveedor</label>
-                        <input type="text" class="form-control" name="supplier" id="supplier">
+                        <select id="supplier" class="form-select" name="supplier">
+                            <option th:each="supplier : ${listaProveedores}"
+                                    th:text="${supplier.companyname}"
+                                    th:value="${supplier.id}"></option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="category" class="form-label">Categoría</label>
-                        <input type="text" class="form-control" name="category" id="category">
+                        <select id="category" class="form-select" name="category">
+                            <option th:each="category : ${listaCategorias}"
+                                    th:text="${category.categoryname}"
+                                    th:value="${category.id}">${categatory.name}</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="quantityperunit" class="form-label">Cantidad por unidad</label>
